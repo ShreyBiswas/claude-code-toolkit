@@ -1,0 +1,8 @@
+{
+  "name": "setup",
+  "version": "1.0.0",
+  "description": "Bootstrap the full toolkit — installs all plugins and applies preferred settings",
+  "author": {
+    "name": "Shrey Biswas"
+  }
+}

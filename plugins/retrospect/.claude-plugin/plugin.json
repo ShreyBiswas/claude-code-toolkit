@@ -1,0 +1,8 @@
+{
+  "name": "retrospect",
+  "version": "1.0.0",
+  "description": "End-of-session config reconciliation — delta-aware audit of CLAUDE.md, memory, hooks, and more",
+  "author": {
+    "name": "Shrey Biswas"
+  }
+}

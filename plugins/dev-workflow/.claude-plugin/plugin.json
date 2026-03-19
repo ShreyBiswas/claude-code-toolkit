@@ -1,0 +1,6 @@
+{
+  "name": "dev-workflow",
+  "version": "1.0.0",
+  "description": "Personal TDD overlay for feature-dev — test-first, non-shortcuttable tests, verify/iterate loop",
+  "author": { "name": "Shrey Biswas" }
+}

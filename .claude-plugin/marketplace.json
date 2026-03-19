@@ -1,0 +1,63 @@
+{
+  "name": "ShreyBiswas-claude-code-toolkit",
+  "owner": {
+    "name": "Shrey Biswas"
+  },
+  "metadata": {
+    "description": "Personal Claude Code plugin marketplace",
+    "version": "1.0.0",
+    "pluginRoot": "./plugins"
+  },
+  "plugins": [
+    {
+      "name": "setup",
+      "source": "./plugins/setup",
+      "description": "Bootstrap the full toolkit — installs all plugins and applies preferred settings",
+      "version": "1.0.0",
+      "category": "productivity",
+      "keywords": ["bootstrap", "setup", "settings"]
+    },
+    {
+      "name": "retrospect",
+      "source": "./plugins/retrospect",
+      "description": "End-of-session config reconciliation — delta-aware audit of CLAUDE.md, memory, hooks, and more",
+      "version": "1.0.0",
+      "category": "productivity",
+      "keywords": ["config", "reconciliation", "memory", "audit"]
+    },
+    {
+      "name": "writing-style",
+      "source": "./plugins/writing-style",
+      "description": "Coding and prose style conventions — Better Comments, verbose naming, structured prose",
+      "version": "1.0.0",
+      "category": "style",
+      "keywords": ["coding-style", "prose", "comments", "naming"]
+    },
+    {
+      "name": "feature-dev",
+      "source": "feature-dev@claude-plugins-official",
+      "description": "Anthropic's feature development workflow — codebase exploration, architecture design, quality review",
+      "version": "1.0.0",
+      "category": "development",
+      "keywords": ["feature", "development", "architecture", "review"],
+      "external": true
+    },
+    {
+      "name": "code-simplifier",
+      "source": "code-simplifier@claude-plugins-official",
+      "description": "Anthropic's autonomous code refinement agent — simplifies for clarity and maintainability",
+      "version": "1.0.0",
+      "category": "development",
+      "keywords": ["simplify", "refactor", "clarity", "maintainability"],
+      "external": true
+    },
+    {
+      "name": "dev-workflow",
+      "source": "./plugins/dev-workflow",
+      "description": "Personal TDD overlay for feature-dev — test-first, non-shortcuttable tests, verify/iterate loop",
+      "version": "1.0.0",
+      "category": "development",
+      "keywords": ["tdd", "testing", "workflow"]
+    }
+  ]
+}
