@@ -28,12 +28,15 @@ claude --plugin-dir ./plugins/retrospect
 
 ## Current plugins
 
-- **setup** — `/toolkit-setup`: installs all marketplace plugins and applies preferred settings
+- **setup** — `/toolkit-setup`: context-aware bootstrap — scans project, interviews user, recommends and installs relevant plugins
 - **retrospect** — `/retrospect`: end-of-session config reconciliation and audit
 - **writing-style** — `coding-style` skill (always active) + `/prose-style` command (on demand)
 - **feature-dev** (external) — `/feature-dev`: Anthropic's feature development workflow
 - **code-simplifier** (external) — autonomous code refinement agent
-- **dev-workflow** — `tdd-overlay` skill (always active): TDD conventions layered on feature-dev
+- **dev-workflow** — `tdd-overlay` skill (always active): run existing tests first for baseline, then TDD conventions layered on feature-dev
+- **visual-design** — `visual-design` skill (conditional): general visual aesthetics for UIs, dashboards, plots, charts, logs, and any visual output
+- **frontend-design** (external) — Anthropic's frontend design skill: bold, production-grade UI with distinctive aesthetic choices
+- **web-design-guidelines** (external) — Vercel's web interface guidelines: accessibility, keyboard support, form behaviour, animation
 
 ## Built-in Claude Code tools
 

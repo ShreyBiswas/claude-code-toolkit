@@ -4,13 +4,14 @@ Personal TDD overlay that supplements Anthropic's `feature-dev` plugin with test
 
 ## What it does
 
-The `tdd-overlay` skill activates automatically during feature development and enforces:
+The `tdd-overlay` skill activates automatically during any coding task and enforces:
 
+- **Test baseline** — run existing tests before making changes for framework discovery, scope mapping, and a blame boundary (inspired by Simon Willison's [agentic engineering patterns](https://simonwillison.net/guides/agentic-engineering-patterns/first-run-the-tests/))
 - **Test-first design** — write a comprehensive, failing test suite before implementation
 - **Non-shortcuttable tests** — no mocking the thing under test, no tautological assertions, no testing implementation details
-- **Verification** — run formatters, type checkers, linters, and review agents alongside tests
+- **Verification** — run formatters, type checkers, linters, and review agents alongside tests; compare against baseline
 - **Iteration loop** — fix implementation not tests; consult user after 3 failed iterations
-- **Reporting** — include test counts and pass/fail breakdown in summaries
+- **Reporting** — include test counts, pass/fail breakdown, and baseline comparison in summaries
 
 ## Relationship to feature-dev
 

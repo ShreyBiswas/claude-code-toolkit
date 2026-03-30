@@ -1,60 +1,69 @@
 ---
 name: toolkit-setup
-description: Install all toolkit plugins and apply preferred Claude Code settings
+description: Context-aware toolkit bootstrap — scans project, interviews user, recommends and installs relevant plugins
 ---
 
 # Toolkit Setup
 
-You are running the toolkit bootstrap. Follow these steps exactly.
+You are running the context-aware toolkit bootstrap. This is a sequential five-phase process. Execute each phase by reading and following the corresponding skill file, then proceed to the next.
 
-## Step 1: Read the marketplace catalogue
+**Important constraints:**
+- All plugin installations require user approval — nothing is installed silently
+- Core plugins are pre-selected but can be deselected
+- Keep interviewing until the project context is fully clear — do not cap the number of questions
+- Do not ask what the project scan already answered
 
-Read the file at the marketplace root: find the closest ancestor directory containing `.claude-plugin/marketplace.json` (this plugin's marketplace). Parse the `plugins` array to get the list of all available plugins.
+---
 
-## Step 2: Install all plugins
+## Phase 1: Project Scan
 
-For each plugin in the marketplace catalogue (except `setup` itself):
+Read and follow the skill at: `${CLAUDE_PLUGIN_ROOT}/skills/project-scanner.md`
 
-1. If the plugin has `"external": true`, use `plugin.source` directly as the install identifier
-2. Otherwise, construct the install identifier: `<plugin.name>@ShreyBiswas-claude-code-toolkit`
-3. Run: `claude plugin install <identifier> --scope user`
-3. Track success/failure for the summary
+This phase scans the project directory to detect languages, frameworks, signals (e.g., `is_python`, `has_tests`, `is_frontend`), and existing toolkit configuration.
 
-If a plugin is already installed, note it as "already installed" and continue.
+Store the project profile in your working context for the next phases.
 
-## Step 3: Apply preferred settings
+---
 
-Read `~/.claude/settings.json`. Apply the following settings if not already present (merge, don't overwrite existing keys):
+## Phase 2: User Interview
 
-```json
-{
-  "attribution": {
-    "commit": "",
-    "pr": ""
-  }
-}
-```
+Read and follow the skill at: `${CLAUDE_PLUGIN_ROOT}/skills/setup-interview.md`
 
-This disables the `Co-Authored-By` line on commits and the attribution footer on PRs.
+Pass the project profile from Phase 1. This phase presents the scan findings, confirms them with the user, and asks targeted gap-filling questions.
 
-**Do not overwrite** any existing settings keys that aren't listed above. Read the file first, merge, then write back.
+If this is a re-run:
+- If the user wants to keep existing plugins → skip to Phase 5
+- If the user wants to evaluate new plugins only → proceed to Phase 3 with `rerun_decision: "evaluate_new"` and the `new_plugins` list
+- If the user wants to review fresh → proceed to Phase 3 normally
 
-If `~/.claude/settings.json` doesn't exist, create it with just these settings.
+Store the augmented profile for Phase 3.
 
-## Step 4: Print summary
+---
 
-Print a summary like:
+## Phase 3: Plugin Matching
 
-```
-Toolkit setup complete.
+Read and follow the skill at: `${CLAUDE_PLUGIN_ROOT}/skills/plugin-matcher.md`
 
-Plugins installed:
-  ✓ retrospect (installed)
-  — setup (skipped, this plugin)
+Pass the augmented profile from Phase 2. This phase reads the marketplace catalogue, scores plugins against the profile, and presents grouped recommendations for user approval.
 
-Settings applied:
-  ✓ attribution.commit: disabled
-  ✓ attribution.pr: disabled
-```
+Store the approved install list for Phase 4.
 
-Adjust the list dynamically based on what the marketplace catalogue contained and what actually happened.
+---
+
+## Phase 4: Configuration
+
+Read and follow the skill at: `${CLAUDE_PLUGIN_ROOT}/skills/plugin-configurator.md`
+
+Pass the approved install list from Phase 3. This phase runs per-plugin configuration for any `configurable: true` plugins.
+
+**If no configurable plugins are in the install list, skip this phase entirely.**
+
+Store the configuration map for Phase 5.
+
+---
+
+## Phase 5: Installation
+
+Read and follow the skill at: `${CLAUDE_PLUGIN_ROOT}/skills/plugin-installer.md`
+
+Pass the approved install list (Phase 3), configuration map (Phase 4), and project profile (Phase 2). This phase installs plugins, writes `.claude/toolkit-config.json`, applies shared settings, and prints a summary.

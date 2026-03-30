@@ -5,15 +5,15 @@
   },
   "metadata": {
     "description": "Personal Claude Code plugin marketplace",
-    "version": "1.0.0",
+    "version": "2.0.0",
     "pluginRoot": "./plugins"
   },
   "plugins": [
     {
       "name": "setup",
       "source": "./plugins/setup",
-      "description": "Bootstrap the full toolkit — installs all plugins and applies preferred settings",
-      "version": "1.0.0",
+      "description": "Context-aware toolkit bootstrap — scans project, interviews user, recommends and installs relevant plugins",
+      "version": "2.0.0",
       "category": "productivity",
       "keywords": ["bootstrap", "setup", "settings"]
     },
@@ -23,7 +23,9 @@
       "description": "End-of-session config reconciliation — delta-aware audit of CLAUDE.md, memory, hooks, and more",
       "version": "1.0.0",
       "category": "productivity",
-      "keywords": ["config", "reconciliation", "memory", "audit"]
+      "keywords": ["config", "reconciliation", "memory", "audit"],
+      "relevance": "core — useful for any project",
+      "configurable": false
     },
     {
       "name": "writing-style",
@@ -31,7 +33,9 @@
       "description": "Coding and prose style conventions — Better Comments, verbose naming, structured prose",
       "version": "1.0.0",
       "category": "style",
-      "keywords": ["coding-style", "prose", "comments", "naming"]
+      "keywords": ["coding-style", "prose", "comments", "naming"],
+      "relevance": "core — useful for any project",
+      "configurable": false
     },
     {
       "name": "feature-dev",
@@ -40,7 +44,9 @@
       "version": "1.0.0",
       "category": "development",
       "keywords": ["feature", "development", "architecture", "review"],
-      "external": true
+      "external": true,
+      "relevance": "useful for any project involving code — feature planning, architecture, review",
+      "configurable": false
     },
     {
       "name": "code-simplifier",
@@ -49,15 +55,52 @@
       "version": "1.0.0",
       "category": "development",
       "keywords": ["simplify", "refactor", "clarity", "maintainability"],
-      "external": true
+      "external": true,
+      "relevance": "useful for any project with existing code that may benefit from simplification",
+      "configurable": false
     },
     {
       "name": "dev-workflow",
       "source": "./plugins/dev-workflow",
-      "description": "Personal TDD overlay for feature-dev — test-first, non-shortcuttable tests, verify/iterate loop",
-      "version": "1.0.0",
+      "description": "TDD overlay — run existing tests first, test-first design, non-shortcuttable tests, verify/iterate loop",
+      "version": "1.1.0",
       "category": "development",
-      "keywords": ["tdd", "testing", "workflow"]
+      "keywords": ["tdd", "testing", "baseline", "workflow"],
+      "relevance": "useful when the project has or will have tests — enforces test-first development",
+      "configurable": false
+    },
+    {
+      "name": "visual-design",
+      "source": "./plugins/visual-design",
+      "description": "General visual design and aesthetics — UI/UX, data visualisation, dashboards, plots, logs, and any visual output",
+      "version": "1.0.0",
+      "category": "design",
+      "keywords": ["design", "aesthetics", "visualisation", "UI", "UX", "plots", "dashboards"],
+      "relevance": "useful when the project produces any visual output — UIs, plots, charts, dashboards, formatted terminal output, reports, documents",
+      "configurable": true,
+      "interview_hint": "Does this project produce any visual output? (UI, plots, charts, dashboards, formatted logs, reports)"
+    },
+    {
+      "name": "frontend-design",
+      "source": "frontend-design@claude-plugins-official",
+      "description": "Anthropic's frontend design skill — bold, production-grade UI with distinctive aesthetic choices",
+      "version": "1.0.0",
+      "category": "design",
+      "keywords": ["frontend", "design", "UI", "components", "CSS"],
+      "external": true,
+      "relevance": "useful when building frontend interfaces — web apps, component libraries, interactive UIs",
+      "configurable": false
+    },
+    {
+      "name": "web-design-guidelines",
+      "source": "web-design-guidelines@vercel",
+      "description": "Vercel's web interface guidelines — accessibility, keyboard support, form behaviour, animation, performance",
+      "version": "1.0.0",
+      "category": "design",
+      "keywords": ["web", "accessibility", "a11y", "UI", "UX", "responsive"],
+      "external": true,
+      "relevance": "useful when building web interfaces — covers accessibility, responsive design, keyboard navigation, form UX, animation, and performance",
+      "configurable": false
     }
   ]
 }
