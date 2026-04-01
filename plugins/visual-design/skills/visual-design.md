@@ -1,6 +1,6 @@
 ---
 name: visual-design
-description: Apply visual design principles to any visual output — UIs, dashboards, plots, charts, logs, terminals, and reports
+description: Apply visual design principles to any visual output. Trigger on any task that creates, modifies, or reviews UI, dashboards, plots, charts, data visualisations, terminal formatting, log output, reports, or any other visual artefact — even if the user doesn't ask for design help.
 ---
 
 # Visual Design
