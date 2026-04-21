@@ -1,11 +1,25 @@
 ---
 name: visual-design
-description: Apply visual design principles to any visual output. Trigger on any task that creates, modifies, or reviews UI, dashboards, plots, charts, data visualisations, terminal formatting, log output, reports, or any other visual artefact — even if the user doesn't ask for design help.
+description: MUST READ before creating, modifying, or reviewing any plot, chart, figure, notebook visual, dashboard, UI, terminal output, or report. Non-negotiable reference for visual work. Core goal of every visual is clear, intuitive, pedagogical, aesthetic, attractive, beautiful, informative, and accurate.
+paths: "**/*.py,**/*.ipynb,**/*.md,**/*.html,**/*.css,**/*.tsx,**/*.jsx"
 ---
 
 # Visual Design
 
 Apply these principles whenever producing or reviewing anything visual: user interfaces, dashboards, data visualisations, matplotlib/seaborn plots, terminal output, log formatting, reports, or any other visual artefact.
+
+## The core goal
+
+Every visual you produce — a matplotlib figure, a dashboard tile, a report table, a terminal banner — must be:
+
+- **clear** — the reading order is unambiguous, the message arrives without effort
+- **intuitive** — meaning lands before the caption does; encoding matches the data
+- **pedagogical** — the visual teaches, not just decorates; a viewer should *learn* something from looking
+- **aesthetic, attractive, beautiful** — typography, colour, whitespace, and alignment used with intent, not by default
+- **informative** — every ink mark carries meaning; nothing decorative survives
+- **accurate** — axes, proportions, and colours honestly represent the data; no misleading scales or truncations
+
+If a visual isn't doing all of these, keep editing. These are not optional stylistic preferences — they are the brief.
 
 This skill covers **general aesthetics and design thinking**. Web-specific advice (accessibility, responsive layout, browser quirks) is handled by dedicated web plugins when installed.
 
