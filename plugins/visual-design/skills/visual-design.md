@@ -73,7 +73,7 @@ Every visual artefact needs a clear reading order. The viewer's eye should land 
 ### 5. Simplicity
 
 - **Remove before adding.** If something can be removed without loss of meaning, remove it.
-- **Reduce chartjunk**: no unnecessary gridlines, no 3D effects on 2D data, no gradient fills on bar charts, no decorative borders on plots
+- **Reduce chartjunk**: no unnecessary gridlines, no decorative 3D effects on bar/line/scatter charts, no gradient fills on bar charts, no decorative borders on plots. (Smooth 2D scientific functions and genuinely 3-axis data are not chartjunk — see Scientific landscapes.)
 - **Default to clean**: `sns.set_style("whitegrid")` or `plt.style.use("seaborn-v0_8-whitegrid")` — then remove even the grid if it adds no value
 - **One message per visual** — if a chart is trying to say two things, split it into two charts
 
@@ -90,6 +90,8 @@ Every visual artefact needs a clear reading order. The viewer's eye should land 
 - **Figure sizing**: set explicit `figsize` for the output context. Print → larger with higher DPI. Screen → match the display width. Do not rely on defaults.
 - **Colour consistency across subplots** — if "Group A" is blue in one subplot, it must be blue in all subplots. Use a shared colour mapping.
 - **Statistical plots**: always show uncertainty (error bars, confidence intervals, shaded regions). A point estimate without uncertainty is incomplete.
+- **Scientific landscapes (loss, energy, response surfaces)** are a special case where 2D heatmaps with contour overlays — and sometimes 3D surface plots — are the *right* tool, not chartjunk. A smooth function over a 2D parameter plane carries topology (basins, ridges, troughs, saddles) that a 1D slice or a bar comparison cannot show. Default to a 2D heatmap with overlaid contours and labelled landmarks (optima, baselines, named points); show iso-magnitude rings or contours so readers can read distance off the figure.
+- **3D rendering for genuinely 3-axis data**: when the data has three real variables (e.g. loss over a 2D parameter plane × training step, or any function of three coordinates), 3D rendering is a legitimate option. The choice between *(a) 3D surface plot*, *(b) 2D heatmap × small-multiples on the third axis* (e.g. `01_baselines.ipynb` Figure 1.5: loss landscapes across training steps), and *(c) animated/interactive surface* depends on what the reader needs to compare. Small-multiples are the safer default when the third axis is discrete or low-cardinality and the reader needs to compare panels directly. Reach for true 3D when basin depth, ridge structure, and the third-axis variation all matter simultaneously and a static 2D facet collapses one of those. Use perspective sparingly (low elevation, near-orthographic), label the third axis explicitly, and never use 3D for purely decorative effect on 2D data — that remains chartjunk.
 
 ### Dashboards and admin panels
 
@@ -117,7 +119,7 @@ Every visual artefact needs a clear reading order. The viewer's eye should land 
 ## Anti-Patterns to Avoid
 
 - **Rainbow colour maps on sequential data** — use perceptually uniform colormaps
-- **3D charts for 2D data** — 3D adds perspective distortion and occlusion for no benefit
+- **3D charts for 2D data** — 3D adds perspective distortion and occlusion for no benefit. *Distinct from genuinely 3-axis data*: when the data has three real variables, 3D rendering or small-multiples are both legitimate; see Scientific landscapes / 3D rendering under Data visualisation.
 - **Pie charts with many slices** — use a horizontal bar chart instead
 - **Truncated y-axes without marking** — either start at 0 or clearly mark the break
 - **Dual y-axes** — almost always confusing. Use two separate plots instead.
