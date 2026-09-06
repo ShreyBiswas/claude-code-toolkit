@@ -1,8 +1,0 @@
-{
-  "name": "setup",
-  "version": "2.0.0",
-  "description": "Context-aware toolkit bootstrap — scans project, interviews user, recommends and installs relevant plugins",
-  "author": {
-    "name": "Shrey Biswas"
-  }
-}

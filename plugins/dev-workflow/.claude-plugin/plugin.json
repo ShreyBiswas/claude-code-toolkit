@@ -1,6 +1,0 @@
-{
-  "name": "dev-workflow",
-  "version": "1.1.0",
-  "description": "TDD overlay — run existing tests first, test-first design, non-shortcuttable tests, verify/iterate loop",
-  "author": { "name": "Shrey Biswas" }
-}
